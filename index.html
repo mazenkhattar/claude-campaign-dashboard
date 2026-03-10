@@ -124,6 +124,7 @@
 
   .note-box{background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:11px 15px;font-size:12px;color:#92400e;margin-bottom:22px;display:flex;gap:8px;align-items:flex-start;}
 
+  /* ── TABLET ── */
   @media(max-width:900px){
     .charts-row,.viz-grid{grid-template-columns:1fr;}
     .kpi-grid{grid-template-columns:repeat(2,1fr);}
@@ -131,6 +132,98 @@
     .nav-date{display:none;}
     .page{padding:70px 14px 50px;}
     .nav-tab{padding:5px 8px;font-size:11.5px;}
+  }
+
+  /* ── MOBILE ── */
+  @media(max-width:600px){
+    /* Nav: scrollable tab bar */
+    nav{
+      flex-direction:column;height:auto;
+      padding:10px 12px 0;gap:0;
+      align-items:flex-start;
+    }
+    .nav-brand{
+      font-size:13px;padding:4px 0 8px;
+      border-bottom:1px solid var(--border);
+      width:100%;
+    }
+    .nav-tabs{
+      display:flex;flex-wrap:nowrap;
+      overflow-x:auto;-webkit-overflow-scrolling:touch;
+      gap:4px;padding:8px 0;width:100%;
+      scrollbar-width:none;
+    }
+    .nav-tabs::-webkit-scrollbar{display:none;}
+    .nav-tab{
+      padding:6px 12px;font-size:12px;
+      white-space:nowrap;flex-shrink:0;
+      border-radius:20px;
+    }
+    .nav-date{display:none;}
+
+    /* Page content */
+    .page{padding:130px 14px 50px;}
+    .page-header h1{font-size:22px;}
+    .page-header p{font-size:12px;}
+
+    /* KPI grid: 2 columns on mobile */
+    .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+    .kpi-value{font-size:18px;}
+    .kpi-label{font-size:10px;}
+
+    /* Charts: single column */
+    .charts-row{grid-template-columns:1fr;gap:12px;}
+    .chart-wrap{height:180px;}
+
+    /* Tables: horizontal scroll with visual hint */
+    .table-wrap{
+      overflow-x:auto;-webkit-overflow-scrolling:touch;
+      border-radius:10px;border:1px solid var(--border);
+      margin-bottom:20px;
+    }
+    .table-wrap::after{
+      content:'← swipe to scroll →';
+      display:block;text-align:center;
+      font-size:10px;color:var(--muted);
+      padding:5px 0 3px;
+    }
+    table{font-size:11.5px;min-width:580px;}
+    thead th{padding:8px 10px;font-size:9.5px;}
+    tbody td{padding:9px 10px;}
+
+    /* Insight cards: single column */
+    .insight-grid{grid-template-columns:1fr;gap:10px;}
+    .insight-card{padding:14px;}
+    .insight-card h4{font-size:12px;}
+    .insight-card p{font-size:11.5px;}
+
+    /* Rec cards */
+    .rec-card{padding:14px 15px;gap:11px;}
+    .rec-card h4{font-size:13px;}
+    .rec-card p{font-size:12px;}
+
+    /* Section titles */
+    .section-title{font-size:13px;}
+
+    /* Funnel bars */
+    .funnel-label{width:70px;font-size:10px;}
+    .funnel-bar{font-size:10px;}
+
+    /* Note box */
+    .note-box{font-size:11.5px;}
+
+    /* Channel badge */
+    .channel-badge{font-size:12px;}
+
+    /* Hero KPIs in summary — stack to single column on very small */
+    .summary-hero{grid-template-columns:repeat(2,1fr)!important;}
+  }
+
+  /* ── VERY SMALL PHONES (iPhone SE etc) ── */
+  @media(max-width:370px){
+    .kpi-grid{grid-template-columns:1fr;}
+    .kpi-value{font-size:20px;}
+    .page{padding:140px 12px 40px;}
   }
 </style>
 </head>
@@ -144,7 +237,7 @@
     <button class="nav-tab" onclick="showPage('tiktok',this)">TikTok</button>
     <button class="nav-tab" onclick="showPage('meta',this)">Meta</button>
     <button class="nav-tab" onclick="showPage('google',this)">Google</button>
-    <button class="nav-tab" onclick="showPage('recs',this)">Recommendations</button>
+    <button class="nav-tab" onclick="showPage('recs',this)">Recs</button>
 
   </div>
   <div class="nav-date">Jan 1 – Jan 31, 2026 · All figures SAR</div>
@@ -162,7 +255,7 @@
   </div>
 
   <div class="section-title">Spend by Channel</div>
-  <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
+  <div class="kpi-grid summary-hero" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
     <div class="kpi-card stripe-snap"><div class="kpi-label">Snapchat</div><div class="kpi-value">SAR 150,503</div><div class="kpi-sub">$40,134 × 3.75</div></div>
     <div class="kpi-card stripe-tiktok"><div class="kpi-label">TikTok (Std + UGC)</div><div class="kpi-value">SAR 63,365</div><div class="kpi-sub">Std 29,541 · UGC 33,824</div></div>
     <div class="kpi-card stripe-meta"><div class="kpi-label">Meta (FB + IG)</div><div class="kpi-value">SAR 84,827</div><div class="kpi-sub">FB 35,313 · IG 49,514</div></div>
